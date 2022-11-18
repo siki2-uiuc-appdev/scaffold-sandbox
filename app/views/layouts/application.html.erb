@@ -11,6 +11,17 @@
   </head>
 
   <body>
+    <nav>
+      <% if !user_signed_in? %>
+        <div><%= link_to "Sign up", new_user_registration_path %></div>
+        <div><%= link_to "Sign in", new_user_session_path %></div>
+      <% else %>
+        <div><%= link_to "Edit profile", edit_user_registration_path, method: :patch%></div>
+        <div><%= button_to "Sign out", destroy_user_session_path, method: :delete %></div>
+      <% end %>
+    </nav>
+    <%# <p style="color: green;"><%= notice %></p> 
+    <%# <p style="color: red;"><%= alert %></p> 
     <%= yield %>
   </body>
 </html>
